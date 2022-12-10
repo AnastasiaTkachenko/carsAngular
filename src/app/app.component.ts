@@ -27,6 +27,7 @@ goScroll(target:HTMLElement) {
 onSubmit() {
   if(this.priceForm.valid) {
     alert("Спасибо за заявку мы,свяжемся с Вами в ближайшее время");
+    this.priceForm.reset(); // delete everything fron the form after its submitted
   }
 }
 }
