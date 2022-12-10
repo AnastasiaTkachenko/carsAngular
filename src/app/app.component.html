@@ -31,23 +31,23 @@
         трассы!
       </p>
       <div class="main-action">
-        <button class="button" id="main-action">Посмотреть автомобили</button>
+        <button class="button" id="main-action" (click)="goScroll(cars)">Посмотреть автомобили</button>
       </div>
     </div>
   </div>
 </section>
-<section class="car" id="cars">
+<section class="car" id="cars" #cars>
   <div class="container">
     <h2 class="sub-title">Наш автопарк</h2>
     <div class="car-items">
       <div class="car-item">
         <div class="car-item-image">
-          <img src="img/1.png" alt="car" />
+          <img src="../assets/img/1.png" alt="car" />
         </div>
         <div class="car-item-title">Lamborghini Huracan Spyder</div>
         <div class="car-item-info">
           <div class="car-item-point">
-            <img src="img/gear.png" alt="gear" />
+            <img src="../assets/img/gear.png" alt="gear" />
             <div>Привод</div>
             <div>полный</div>
           </div>
@@ -67,7 +67,7 @@
           <!-- end -->
         </div>
         <div class="car-item-action">
-          <button class="button car-button">Забронировать</button>
+          <button class="button car-button" (click)="goScroll(price)">Забронировать</button>
         </div>
       </div>
       <!--        2 -->
@@ -78,7 +78,7 @@
         <div class="car-item-title">Chevrolet Corvette</div>
         <div class="car-item-info">
           <div class="car-item-point">
-            <img src="img/gear.png" alt="gear" />
+            <img src="../assets/img/gear.png" alt="gear" />
             <div>Привод</div>
             <div>полный</div>
           </div>
@@ -98,7 +98,7 @@
           <!-- end -->
         </div>
         <div class="car-item-action">
-          <button class="button car-button">Забронировать</button>
+          <button class="button car-button" (click)="goScroll(price)">Забронировать</button>
         </div>
       </div>
       <!--   3 -->
@@ -129,7 +129,7 @@
           <!-- end -->
         </div>
         <div class="car-item-action">
-          <button class="button car-button">Забронировать</button>
+          <button class="button car-button" (click)="goScroll(price)">Забронировать</button>
         </div>
       </div>
       <!-- 4 -->
@@ -160,7 +160,7 @@
           <!-- end -->
         </div>
         <div class="car-item-action">
-          <button class="button car-button">Забронировать</button>
+          <button class="button car-button" (click)="goScroll(price)">Забронировать</button>
         </div>
       </div>
       <!-- 5 -->
@@ -191,7 +191,7 @@
           <!-- end -->
         </div>
         <div class="car-item-action">
-          <button class="button car-button">Забронировать</button>
+          <button class="button car-button" (click)="goScroll(price)">Забронировать</button>
         </div>
       </div>
       <!-- 6 -->
@@ -222,35 +222,35 @@
           <!-- end -->
         </div>
         <div class="car-item-action">
-          <button class="button car-button">Забронировать</button>
+          <button class="button car-button" (click)="goScroll(price)">Забронировать</button>
         </div>
       </div>
       <!-- end cars -->
     </div>
   </div>
 </section>
-<section class="price" id="price">
+<section class="price" id="price" #price>
   <div class="container">
     <h2 class="sub-title">Узнать цену и забронировать</h2>
     <p class="price-text">
       Заполните данные, и мы перезвоним вам для уточнения всех деталей
       бронирования
     </p>
-    <form action="" class="price-form">
-      <input type="text" class="price-input" id="name" placeholder="Ваше имя" />
+    <form action="" class="price-form" [formGroup]="priceForm">
+      <input type="text" class="price-input" id="name" placeholder="Ваше имя" formControlName="name">
       <input
         type="text"
         class="price-input"
         placeholder="Ваш телефон"
         id="phone"
-      />
+        formControlName="phone">
       <input
         type="text"
         class="price-input"
         id="car"
         placeholder="Автомобиль, который вас интересует"
-      />
-      <button class="button" type="button" id="price-action">
+        formControlName="car">
+      <button class="button" type="button" id="price-action" (click)="onSubmit()">
         Узнать цену
       </button>
     </form>

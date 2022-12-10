@@ -1,29 +1,4 @@
-html {
-   box-sizing: border-box;
- }
- 
- *,
- *::before,
- *::after {
-   box-sizing: inherit;
- }
- 
- body {
-   font-family:"Roboto", sans-serif;
-/*    src:url('../assets/fonts/') */
 
- }
- .container {
-   width: 1200px;
-   padding: 0 15px;
-   margin: 0 auto;
- }
- 
- @media screen and (max-width: 810px) {
-   .container {
-     width: auto;
-   }
- }
  
  /* separator  */
  
