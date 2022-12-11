@@ -1,25 +1,27 @@
 <!-- <div class="container"> -->
-  <header class="header">
-    <div class="logo">
-      <a href="http://google.com"> <img src="../assets/img/logo.png" alt="logo" /></a>
-    </div>
-    <nav class="nav-menu">
-      <ul class="nav-menu-list">
-        <li class="nav-menu-link">
-          <a href="#">Главная</a>
-        </li>
-        <li class="nav-menu-link">
-          <a href="#cars">Автомобили</a>
-        </li>
-        <li class="nav-menu-link">
-          <a href="#price">Бронирование авто</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+<header class="header container">
+  <div class="logo">
+    <a href="http://google.com">
+      <img src="../assets/img/logo.png" alt="logo"
+    /></a>
+  </div>
+  <nav class="nav-menu">
+    <ul class="nav-menu-list">
+      <li class="nav-menu-link">
+        <a href="#">Главная</a>
+      </li>
+      <li class="nav-menu-link">
+        <a href="#cars">Автомобили</a>
+      </li>
+      <li class="nav-menu-link">
+        <a href="#price">Бронирование авто</a>
+      </li>
+    </ul>
+  </nav>
+</header>
 <!-- </div> -->
 <div class="separator"></div>
-<section class="main">
+<section class="main"  [ngStyle]="bgPos">
   <div class="container">
     <div class="main-info">
       <h1 class="main-title">Аренда премиальных автомобилей</h1>
@@ -31,7 +33,9 @@
         трассы!
       </p>
       <div class="main-action">
-        <button class="button" id="main-action" (click)="goScroll(cars)">Посмотреть автомобили</button>
+        <button class="button" id="main-action" (click)="goScroll(cars)">
+          Посмотреть автомобили
+        </button>
       </div>
     </div>
   </div>
@@ -40,192 +44,38 @@
   <div class="container">
     <h2 class="sub-title">Наш автопарк</h2>
     <div class="car-items">
-      <div class="car-item">
+      <div class="car-item" *ngFor="let car of carsData">
         <div class="car-item-image">
-          <img src="../assets/img/1.png" alt="car" />
+          <img src="../assets/img/{{ car.image }}" alt="car" />
         </div>
-        <div class="car-item-title">Lamborghini Huracan Spyder</div>
+        <div class="car-item-title">{{ car.name }}</div>
         <div class="car-item-info">
           <div class="car-item-point">
             <img src="../assets/img/gear.png" alt="gear" />
             <div>Привод</div>
-            <div>полный</div>
+            <div>{{ car.gear }}</div>
           </div>
           <!--       2 -->
           <div class="car-item-point">
             <img src="../assets/img/wheel.png" alt="wheel" />
             <div>Двигатель</div>
-            <div>5.2 л.с.</div>
+            <div>{{ car.engine }} л.c.</div>
           </div>
           <!--      end -->
           <!--    3 -->
           <div class="car-item-point">
             <img src="../assets/img/belt.png" alt="belt" />
             <div>Кол-во мест</div>
-            <div>2</div>
+            <div>{{ car.places }}</div>
           </div>
           <!-- end -->
         </div>
         <div class="car-item-action">
-          <button class="button car-button" (click)="goScroll(price)">Забронировать</button>
+          <button class="button car-button" (click)="goScroll(price,car)">
+            Забронировать
+          </button>
         </div>
       </div>
-      <!--        2 -->
-      <div class="car-item">
-        <div class="car-item-image">
-          <img src="../assets/img/2.png" alt="car" />
-        </div>
-        <div class="car-item-title">Chevrolet Corvette</div>
-        <div class="car-item-info">
-          <div class="car-item-point">
-            <img src="../assets/img/gear.png" alt="gear" />
-            <div>Привод</div>
-            <div>полный</div>
-          </div>
-          <!--       2 -->
-          <div class="car-item-point">
-            <img src="../assets/img/wheel.png" alt="wheel" />
-            <div>Двигатель</div>
-            <div>6.2 л.с.</div>
-          </div>
-          <!--      end -->
-          <!--    3 -->
-          <div class="car-item-point">
-            <img src="../assets/img/belt.png" alt="belt" />
-            <div>Кол-во мест</div>
-            <div>2</div>
-          </div>
-          <!-- end -->
-        </div>
-        <div class="car-item-action">
-          <button class="button car-button" (click)="goScroll(price)">Забронировать</button>
-        </div>
-      </div>
-      <!--   3 -->
-      <div class="car-item">
-        <div class="car-item-image">
-          <img src="../assets/img/3.png" alt="car" />
-        </div>
-        <div class="car-item-title">Ferrari California</div>
-        <div class="car-item-info">
-          <div class="car-item-point">
-            <img src="../assets/img/gear.png" alt="gear" />
-            <div>Привод</div>
-            <div>полный</div>
-          </div>
-          <!--       2 -->
-          <div class="car-item-point">
-            <img src="../assets/img/wheel.png" alt="wheel" />
-            <div>Двигатель</div>
-            <div>3.9 л.с.</div>
-          </div>
-          <!--      end -->
-          <!--    3 -->
-          <div class="car-item-point">
-            <img src="../assets/img/belt.png" alt="belt" />
-            <div>Кол-во мест</div>
-            <div>4</div>
-          </div>
-          <!-- end -->
-        </div>
-        <div class="car-item-action">
-          <button class="button car-button" (click)="goScroll(price)">Забронировать</button>
-        </div>
-      </div>
-      <!-- 4 -->
-      <div class="car-item">
-        <div class="car-item-image">
-          <img src="../assets/img/4.png" alt="car" />
-        </div>
-        <div class="car-item-title">Lamborghini Urus</div>
-        <div class="car-item-info">
-          <div class="car-item-point">
-            <img src="../assets/img/gear.png" alt="gear" />
-            <div>Привод</div>
-            <div>полный</div>
-          </div>
-          <!--       2 -->
-          <div class="car-item-point">
-            <img src="../assets/img/wheel.png" alt="wheel" />
-            <div>Двигатель</div>
-            <div>4.0 л.с.</div>
-          </div>
-          <!--      end -->
-          <!--    3 -->
-          <div class="car-item-point">
-            <img src="../assets/img/belt.png" alt="belt" />
-            <div>Кол-во мест</div>
-            <div>5</div>
-          </div>
-          <!-- end -->
-        </div>
-        <div class="car-item-action">
-          <button class="button car-button" (click)="goScroll(price)">Забронировать</button>
-        </div>
-      </div>
-      <!-- 5 -->
-      <div class="car-item">
-        <div class="car-item-image">
-          <img src="../assets/img/5.png" alt="car" />
-        </div>
-        <div class="car-item-title">Audi R8</div>
-        <div class="car-item-info">
-          <div class="car-item-point">
-            <img src="../assets/img/gear.png" alt="gear" />
-            <div>Привод</div>
-            <div>полный</div>
-          </div>
-          <!--       2 -->
-          <div class="car-item-point">
-            <img src="../assets/img/wheel.png" alt="wheel" />
-            <div>Двигатель</div>
-            <div>5.2 л.с.</div>
-          </div>
-          <!--      end -->
-          <!--    3 -->
-          <div class="car-item-point">
-            <img src="../assets/img/belt.png" alt="belt" />
-            <div>Кол-во мест</div>
-            <div>2</div>
-          </div>
-          <!-- end -->
-        </div>
-        <div class="car-item-action">
-          <button class="button car-button" (click)="goScroll(price)">Забронировать</button>
-        </div>
-      </div>
-      <!-- 6 -->
-      <div class="car-item">
-        <div class="car-item-image">
-          <img src="../assets/img/6.png" alt="car" />
-        </div>
-        <div class="car-item-title">Chevrolet Camaro</div>
-        <div class="car-item-info">
-          <div class="car-item-point">
-            <img src="../assets/img/gear.png" alt="gear" />
-            <div>Привод</div>
-            <div>полный</div>
-          </div>
-          <!--       2 -->
-          <div class="car-item-point">
-            <img src="../assets/img/wheel.png" alt="wheel" />
-            <div>Двигатель</div>
-            <div>2.0 л.с.</div>
-          </div>
-          <!--      end -->
-          <!--    3 -->
-          <div class="car-item-point">
-            <img src="../assets/img/belt.png" alt="belt" />
-            <div>Кол-во мест</div>
-            <div>4</div>
-          </div>
-          <!-- end -->
-        </div>
-        <div class="car-item-action">
-          <button class="button car-button" (click)="goScroll(price)">Забронировать</button>
-        </div>
-      </div>
-      <!-- end cars -->
     </div>
   </div>
 </section>
@@ -237,31 +87,47 @@
       бронирования
     </p>
     <form action="" class="price-form" [formGroup]="priceForm">
-      <input type="text" class="price-input" id="name" placeholder="Ваше имя" formControlName="name">
+      <input
+        type="text"
+        class="price-input"
+        id="name"
+        placeholder="Ваше имя"
+        formControlName="name"
+      />
       <input
         type="text"
         class="price-input"
         placeholder="Ваш телефон"
         id="phone"
-        formControlName="phone">
+        formControlName="phone"
+      />
       <input
         type="text"
         class="price-input"
         id="car"
         placeholder="Автомобиль, который вас интересует"
-        formControlName="car">
-      <button class="button" type="button" id="price-action" (click)="onSubmit()" [disabled]="!priceForm.valid">
+        formControlName="car"
+      />
+      <button
+        class="button"
+        type="button"
+        id="price-action"
+        (click)="onSubmit()"
+        [disabled]="!priceForm.valid"
+      >
         Узнать цену
       </button>
     </form>
-    <img src="../assets/img/rolls.png" alt="rolls" class="price-image" />
+    <img src="../assets/img/rolls.png" alt="rolls" class="price-image" [ngStyle]="trans"/>
   </div>
 </section>
 <div class="separator"></div>
 <footer class="footer">
   <div class="container">
     <div class="logo">
-      <a href="http://google.com"> <img src="../assets/img/logo.png" alt="logo" /></a>
+      <a href="http://google.com">
+        <img src="../assets/img/logo.png" alt="logo"
+      /></a>
     </div>
     <div class="footer-text">Все права защищены</div>
   </div>

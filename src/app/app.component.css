@@ -6,13 +6,18 @@
 /*  header  */
 .header {
   display: flex;
-  justify-content: space-between;
   padding: 25px 0;
   align-items: center;
+
 }
 
-.nav-menu-list {
-  display: flex;
+.nav-menu {
+display: flex;
+margin-left:244px;
+}
+
+.nav-menu ul {
+display:flex;
 }
 
 .nav-menu-link {
@@ -125,13 +130,13 @@
   transition: all 0.5s;
 }
 
-.button:hover:before:not(:disabled) {
+.button:hover:before/* :not(:disabled) */ {
   transform: translateX(100%) rotate(45deg);
 }
 
 .button:disabled {
-  cursor:not-allowed;
-  color:gray;
+  cursor: not-allowed;
+  color: gray;
   background-color: #343434;
 }
 /* second section cars */
@@ -282,7 +287,8 @@
 
 /*  forms Angular */
 
-.price-input.ng-touched.ng-valid {  /* angular adds its proper clasess which we can use  */
+.price-input.ng-touched.ng-valid {
+  /* angular adds its proper clasess which we can use  */
   border: 1px solid green;
 }
 .price-input.ng-touched.ng-invalid {
