@@ -14,7 +14,12 @@ export class AppComponent {
       phone:["",Validators.required],
       car:["",Validators.required],
     }
-  )
+  );
+
+/*   make the cars dynamic  */
+carsData = [];
+
+
 constructor(private fb :FormBuilder) {
   
 }
