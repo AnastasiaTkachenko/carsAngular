@@ -8,16 +8,15 @@
   display: flex;
   padding: 25px 0;
   align-items: center;
-
 }
 
 .nav-menu {
-display: flex;
-margin-left:244px;
+  display: flex;
+  margin-left: 244px;
 }
 
 .nav-menu ul {
-display:flex;
+  display: flex;
 }
 
 .nav-menu-link {
@@ -293,4 +292,38 @@ display:flex;
 }
 .price-input.ng-touched.ng-invalid {
   border: 1px solid red;
+}
+
+/* toggle  */
+.car-toggle {
+  display: flex;
+  width: 194px;
+  border: 1px solid gray;
+  margin: 20px 0;
+}
+
+.car-toggle div {
+  padding: 20px;
+  background: white;
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: black;
+  transition: background-color 0.5s;
+  cursor: pointer;
+}
+
+.car-toggle div.active {
+  background: #030305;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.car .container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }

@@ -71,9 +71,10 @@ export class AppComponent {
 
 /* to receive the data about cars */
   ngOnInit() {
-    this.appService.getData().subscribe(carsData=> this.carsData = carsData);
+   /*  this.appService.getData().subscribe(carsData=> this.carsData = carsData); */
+   this.appService.getData(this.category).subscribe(carsData => this.carsData = carsData);
   }
-  
+
   goScroll(target: HTMLElement, car?: any) {
     target.scrollIntoView({ behavior: 'smooth' });
     if (car) {
@@ -81,6 +82,11 @@ export class AppComponent {
     }
   }
 
+  category: string = 'sport';
+toggleCategory(category: string) {
+  this.category = category;
+  this.ngOnInit();
+}
   /* parallax  */
   trans: any;
   @HostListener('document:mousemove', ['$event'])
