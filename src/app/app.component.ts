@@ -1,5 +1,11 @@
-import { Component, HostListener } from '@angular/core';
+import {
+  Component,
+  ComponentFactoryResolver,
+  HostListener,
+} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { subscribeOn } from 'rxjs';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +20,7 @@ export class AppComponent {
   });
 
   /*   make the cars dynamic  */
-  carsData = [
+ /*  carsData = [
     {
       image: '1.png',
       name: 'Lamborghini Huracan Spyder',
@@ -57,10 +63,17 @@ export class AppComponent {
       engine: 2.0,
       places: 4,
     },
-  ];
+  ]; */
 
-  constructor(private fb: FormBuilder) {}
+  carsData:any;
 
+  constructor(private fb: FormBuilder, private appService: AppService) {}
+
+/* to receive the data about cars */
+  ngOnInit() {
+    this.appService.getData().subscribe(carsData=> this.carsData = carsData);
+  }
+  
   goScroll(target: HTMLElement, car?: any) {
     target.scrollIntoView({ behavior: 'smooth' });
     if (car) {
@@ -72,20 +85,38 @@ export class AppComponent {
   trans: any;
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(e: MouseEvent) {
-    this.trans = {transform: 'translate3d(' + ((e.clientX * 0.3) / 8) + 'px,' + ((e.clientY * 0.3) / 8) + 'px,0px)'};
+    this.trans = {
+      transform:
+        'translate3d(' +
+        (e.clientX * 0.3) / 8 +
+        'px,' +
+        (e.clientY * 0.3) / 8 +
+        'px,0px)',
+    };
   }
-  
+
   bgPos: any;
   @HostListener('document:scroll', ['$event'])
   onScroll() {
-    this.bgPos = {backgroundPositionX: '0' + (0.3 * window.scrollY) + 'px'};
+    this.bgPos = { backgroundPositionX: '0' + 0.3 * window.scrollY + 'px' };
   }
 
   onSubmit() {
     if (this.priceForm.valid) {
+      this.appService
+        .sendQuery(this.priceForm.value)
+      /*   .subscribe((result) => console.log(result)); */
       alert('Спасибо за заявку мы,свяжемся с Вами в ближайшее время');
-      this.priceForm.reset(); // delete everything fron the form after its submitted
+      /*       this.priceForm.reset();  */ // delete everything fron the form after its submitted
     }
+    this.appService.sendQuery(this.priceForm.value).subscribe({
+      next: (response: any) => {
+        alert(response.message);
+        this.priceForm.reset();
+      },
+      error: (response) => {
+        alert(response.console.message);
+      },
+    });
   }
 }
-
